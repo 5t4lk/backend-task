@@ -5,7 +5,12 @@ import (
 	"net/http"
 )
 
-func reqLatestArticles(l string) ([]byte, error) {
+const (
+	sourceLatestN   = "https://www.brentfordfc.com/api/incrowd/getnewlistinformation?count="
+	sourceArticleID = "https://www.brentfordfc.com/api/incrowd/getnewsarticleinformation?id="
+)
+
+func ReqLatestArticles(l string) ([]byte, error) {
 	r, err := http.Get(sourceLatestN + l)
 	if err != nil {
 		return nil, err
@@ -21,7 +26,7 @@ func reqLatestArticles(l string) ([]byte, error) {
 	return byteData, nil
 }
 
-func reqArticleByID(ID string) ([]byte, error) {
+func ReqArticleByID(ID string) ([]byte, error) {
 	r, err := http.Get(sourceArticleID + ID)
 	if err != nil {
 		return nil, err

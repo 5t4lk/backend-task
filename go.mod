@@ -1,4 +1,4 @@
-module example/todo-go
+module github.com/5t4lk/rest-api
 
 go 1.18
 

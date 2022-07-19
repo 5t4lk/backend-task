@@ -4,13 +4,10 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	"github.com/5t4lk/rest-api/pkg/news"
+	"github.com/5t4lk/rest-api/pkg/requests"
 	"os"
 	"time"
-)
-
-const (
-	sourceLatestN   = "https://www.brentfordfc.com/api/incrowd/getnewlistinformation?count="
-	sourceArticleID = "https://www.brentfordfc.com/api/incrowd/getnewsarticleinformation?id="
 )
 
 func main() {
@@ -28,9 +25,9 @@ func userChoiceAndLogic() error {
 
 		enter("Enter the length of the list: \n", &listLength)
 
-		bytesData, _ := reqLatestArticles(listLength) // the body of response in var. bytesData
+		bytesData, _ := requests.ReqLatestArticles(listLength) // the body of response in var. bytesData
 
-		var newListInformation NewListInformation
+		var newListInformation news.NewListInformation
 
 		err := xml.Unmarshal(bytesData, &newListInformation)
 		if err != nil {
@@ -48,12 +45,12 @@ func userChoiceAndLogic() error {
 
 		enter("Just enter ID of article: ", &articleID)
 
-		bytesData, err := reqArticleByID(articleID) // the body of response in var. bytesData
+		bytesData, err := requests.ReqArticleByID(articleID) // the body of response in var. bytesData
 		if err != nil {
 			return err
 		}
 
-		var newListInformation MainData
+		var newListInformation news.MainData
 
 		err = xml.Unmarshal(bytesData, &newListInformation)
 		if err != nil {
