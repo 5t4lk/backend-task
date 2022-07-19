@@ -1,7 +1,7 @@
 # Installation
 > git clone https://github.com/5t4lk/backend-task
 # How to run?
-> Clone this repository to your IDE. Write in console: go run .\main.go. Check console. Done.
+> Clone this repository to your IDE. Write in console: "go run .\cmd\app\main.go". Check console. Done.
 # Additional information
 > Check file "README.txt" in this repository.
 # History
